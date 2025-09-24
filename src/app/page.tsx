@@ -12,31 +12,38 @@ import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-7xl space-y-10 px-5 py-10">
-      <div className="flex items-center bg-secondary md:h-96">
-        <div className="space-y-7 p-10 text-center md:w-1/2">
-          <h1 className="text-3xl font-bold md:text-4xl">
-            Fill the void in your heart
+    <main className="mx-auto max-w-7xl px-5 py-10">
+      {/* Hero Section */}
+      <section className="relative flex flex-col items-center justify-center overflow-hidden bg-secondary md:flex-row md:h-[500px]">
+        {/* Left Text Content */}
+        <div className="z-10 flex flex-col items-center space-y-6 px-6 py-10 text-center md:w-1/2 md:items-start md:text-left">
+          <h1 className="text-4xl font-extrabold tracking-tight text-primary md:text-5xl lg:text-6xl">
+            Glow Beyond Skin Deep
           </h1>
-          <p>
-            Tough day? Credit card maxed out? Buy some expensive stuff and
-            become happy again!
+          <p className="max-w-lg text-lg text-muted-foreground md:text-xl">
+              Nourish, protect, and reveal your natural radiance with skincare made just for you.
           </p>
-          <Button asChild>
-            <Link href="/shop">
-              Shop Now <ArrowRight className="ml-2 size-5" />
+          <Button asChild size="lg" className="px-8 py-6">
+            <Link href="/shop" className="flex items-center">
+              Shop Now <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
+
+        {/* Right Banner Image */}
         <div className="relative hidden h-full w-1/2 md:block">
           <Image
             src={banner}
-            alt="Flow Shop banner"
-            className="h-full object-cover"
+            alt="Skincare banner"
+            className="h-full w-full object-cover"
+            priority
           />
+          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-secondary via-transparent to-transparent" />
         </div>
-      </div>
+      </section>
+
+      {/* Featured Products Section */}
       <Suspense fallback={<LoadingSkeleton />}>
         <FeaturedProducts />
       </Suspense>
@@ -62,7 +69,7 @@ async function FeaturedProducts() {
   }
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 mt-3">
       <h2 className="text-2xl font-bold">Featured Products</h2>
       <div className="flex grid-cols-2 flex-col gap-5 sm:grid md:grid-cols-3 lg:grid-cols-4">
         {featuredProducts.items.map((product) => (

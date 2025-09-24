@@ -22,11 +22,9 @@ export async function getUserOrders(
   { limit, cursor }: GetUserOrderFilters,
 ) {
   return wixClient.orders.searchOrders({
-    search: {
-      cursorPaging: {
-        limit,
-        cursor,
-      },
+    cursorPaging: {
+      limit,
+      cursor,
     },
   });
 }

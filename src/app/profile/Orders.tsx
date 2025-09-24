@@ -32,9 +32,10 @@ export default function Orders() {
       {status === "success" && !orders.length && !hasNextPage && (
         <p>No orders yet</p>
       )}
-      {orders.map((order) => (
-        <Order key={order.number} order={order} />
-      ))}
+      {orders.map(
+        (order) =>
+          order && <Order key={order.number} order={order} />
+      )}
       {hasNextPage && (
         <LoadingButton
           loading={isFetchingNextPage}

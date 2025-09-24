@@ -117,7 +117,7 @@ export async function getRelatedProducts(
     },
   );
 
-  const productIds = result.recommendation?.items
+  const productIds = (result.recommendation?.items ?? [])
     .map((item) => item.catalogItemId)
     .filter((id) => id !== undefined);
 

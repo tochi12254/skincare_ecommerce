@@ -38,7 +38,7 @@ export default async function Page({
 
   return (
     <div className="space-y-10">
-      <h1 className="text-center text-3xl font-bold md:text-4xl">{title}</h1>
+      <h1 className="text-start text-3xl font-bold md:text-4xl">{title}</h1>
       <Suspense fallback={<LoadingSkeleton />} key={`${q}-${page}`}>
         <ProductResults
           q={q}
@@ -86,7 +86,7 @@ async function ProductResults({
 
   return (
     <div className="space-y-10 group-has-[[data-pending]]:animate-pulse">
-      <p className="text-center text-xl">
+      <p className="text-start text-xl">
         {products.totalCount}{" "}
         {products.totalCount === 1 ? "product" : "products"} found
       </p>

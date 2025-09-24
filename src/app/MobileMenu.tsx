@@ -28,7 +28,6 @@ export default function MobileMenu({
 }: MobileMenuProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -55,16 +54,28 @@ export default function MobileMenu({
       >
         <MenuIcon />
       </Button>
+
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetContent side="left" className="w-full">
-          <SheetHeader>
-            <SheetTitle>Navigation</SheetTitle>
+        <SheetContent
+          side="left"
+          className="flex h-full w-full flex-col p-6 sm:max-w-sm"
+        >
+          {/* Header */}
+          <SheetHeader className="mb-6">
+            <SheetTitle className="text-lg font-bold">Menu</SheetTitle>
           </SheetHeader>
-          <div className="flex flex-col items-center space-y-10 py-10">
-            <SearchField className="w-full" />
-            <ul className="space-y-5 text-center text-lg">
+
+          {/* Search */}
+          <SearchField className="mb-6 w-full" />
+
+          {/* Navigation */}
+          <nav className="flex-1">
+            <ul className="flex flex-col space-y-4 text-base font-medium">
               <li>
-                <Link href="/shop" className="font-semibold hover:underline">
+                <Link
+                  href="/shop"
+                  className="block w-full text-left hover:text-primary"
+                >
                   Shop
                 </Link>
               </li>
@@ -72,13 +83,17 @@ export default function MobileMenu({
                 <li key={collection._id}>
                   <Link
                     href={`/collections/${collection.slug}`}
-                    className="font-semibold hover:underline"
+                    className="block w-full text-left hover:text-primary"
                   >
                     {collection.name}
                   </Link>
                 </li>
               ))}
             </ul>
+          </nav>
+
+          {/* User Section at bottom */}
+          <div className="mt-8 border-t pt-6">
             <UserButton loggedInMember={loggedInMember} />
           </div>
         </SheetContent>

@@ -11,10 +11,10 @@ const lora = Lora({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Flow Shop",
-    absolute: "Flow Shop",
+    template: "%s | Skincare",
+    absolute: "Skincare",
   },
-  description: "A full-stack e-commerce application built with Next.js 15",
+  description: "Glow starts with care — nourish, protect, and love the skin you’re in",
 };
 
 export default function RootLayout({

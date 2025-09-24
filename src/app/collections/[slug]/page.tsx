@@ -26,7 +26,7 @@ export async function generateMetadata({
     title: collection.name,
     description: collection.description,
     openGraph: {
-      images: banner ? [{ url: banner.url }] : [],
+      images: banner?.url ? [{ url: banner.url as string }] : [],
     },
   };
 }

@@ -17,7 +17,15 @@ export function useCartCheckout() {
 
     try {
       const checkoutUrl = await getCheckoutUrlForCurrentCart(wixBrowserClient);
-      window.location.href = checkoutUrl;
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      } else {
+        setPending(false);
+        toast({
+          variant: "destructive",
+          description: "Failed to load checkout. Please try again.",
+        });
+      }
     } catch (error) {
       setPending(false);
       console.error(error);
@@ -44,7 +52,15 @@ export function useQuickBuy() {
         wixBrowserClient,
         values,
       );
-      window.location.href = checkoutUrl;
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      } else {
+        setPending(false);
+        toast({
+          variant: "destructive",
+          description: "Failed to load checkout. Please try again.",
+        });
+      }
     } catch (error) {
       setPending(false);
       console.error(error);
